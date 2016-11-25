@@ -1,0 +1,8 @@
+.idea
+
+/bizico/current_environment.py
+bizico/current_environment.py
+static/release/**
+static/uploads/**
+
+logs/

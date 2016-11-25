@@ -1,0 +1,11 @@
+.error{
+    color: red;
+}
+
+.center {
+    text-align:center;
+}
+
+.center form {
+    display:inline-block;
+}
