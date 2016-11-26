@@ -2,17 +2,15 @@ package main
 
 import (
 	"github.com/beatrichartz/martini-sockets"
-	"github.com/go-martini/martini" //for routing
+	"github.com/go-martini/martini"
+	"github.com/life_of_student/models"
+	"github.com/life_of_student/routes"
+	"github.com/life_of_student/utils"
 	"github.com/martini-contrib/binding"
-	"github.com/martini-contrib/render" //Martini middleware/handler for easily rendering serialized JSON, XML, and HTML template responses
+	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessionauth"
 	"github.com/martini-contrib/sessions"
-	"gopkg.in/mgo.v2"
 	"html/template"
-
-	"./models"
-	"./routes"
-	"./utils"
 )
 
 var postComment *routes.PostsComment
@@ -20,15 +18,6 @@ var postComment *routes.PostsComment
 func main() {
 	m := martini.Classic()
 
-	session, err := mgo.Dial("localhost")
-	if err != nil {
-		panic(err)
-	}
-
-	defer session.Close()
-
-	db := session.DB("blog")
-	m.Map(db)
 	postComment = routes.NewPostsComment()
 	m.Map(postComment)
 

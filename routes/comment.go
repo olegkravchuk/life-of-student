@@ -1,11 +1,10 @@
 package routes
 
 import (
-	"../models"
-	"../services"
 	"github.com/go-martini/martini"
+	"github.com/life_of_student/models"
+	"github.com/life_of_student/services"
 	"github.com/martini-contrib/sessionauth"
-	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"net/http"
 	"strconv"
@@ -85,7 +84,7 @@ func NewPostsComment() *PostsComment {
 	return &PostsComment{sync.Mutex{}, make([]*Room, 0)}
 }
 
-func CreateCommentHandler(postCom *PostsComment, req *http.Request, w http.ResponseWriter, params martini.Params, receiver <-chan *models.Message, sender chan<- *models.Message, done <-chan bool, disconnect chan<- int, errorChannel <-chan error, database *mgo.Database, user sessionauth.User) {
+func CreateCommentHandler(postCom *PostsComment, req *http.Request, w http.ResponseWriter, params martini.Params, receiver <-chan *models.Message, sender chan<- *models.Message, done <-chan bool, disconnect chan<- int, errorChannel <-chan error, user sessionauth.User) {
 	client := &Client{user.(*models.MyUser).Username, receiver, sender, done, errorChannel, disconnect}
 	r := postCom.getRoom(params["id"])
 	r.appendClient(client)
@@ -98,12 +97,12 @@ func CreateCommentHandler(postCom *PostsComment, req *http.Request, w http.Respo
 		case msg := <-client.in:
 			postIdInt, _ := strconv.Atoi(id)
 			servicePost := services.PostService{}
-			post, err := servicePost.GetPost(database, bson.M{"id": postIdInt})
+			post, err := servicePost.GetPost(bson.M{"id": postIdInt})
 			if err != nil {
 				http.NotFound(w, req)
 			}
 			serviceComment := services.CommentService{}
-			serviceComment.CreateComment(database, models.Comment{Post: *post, Author: *user.(*models.MyUser), Comment: msg.Comment, CreateDate: time.Now()})
+			serviceComment.CreateComment(models.Comment{Post: *post, Author: *user.(*models.MyUser), Comment: msg.Comment, CreateDate: time.Now()})
 			msg.Author = user.(*models.MyUser).Username
 			msg.Date = time.Now().Format("2006-01-02")
 			sender <- msg

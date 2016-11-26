@@ -1,32 +1,29 @@
 package routes
 
 import (
+	"github.com/life_of_student/models"
+	"github.com/life_of_student/services"
+	"github.com/life_of_student/utils"
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessionauth"
 	"github.com/martini-contrib/sessions"
-	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"net/http"
-
-	"../models"
-	"../services"
-	"../utils"
 )
 
 func RegistrationViewHandler(rnd render.Render, user sessionauth.User) {
 	rnd.HTML(200, "registration", nil)
 }
 
-func RegistrationUserHandler(r *http.Request, rnd render.Render, database *mgo.Database, session sessions.Session,
-	user sessionauth.User) {
+func RegistrationUserHandler(r *http.Request, rnd render.Render, session sessions.Session) {
 	username := r.FormValue("username")
 	email := r.FormValue("email")
 	password := r.FormValue("password")
 
 	serviceUsers := services.UserService{}
-	n, _ := serviceUsers.GetCountUsers(database)
+	n, _ := serviceUsers.GetCountUsers()
 	newUser := models.MyUser{Id: int64(n + 1), Username: username, Email: email, Password: utils.PasswordToHash(password)}
-	serviceUsers.CreateUser(database, newUser)
+	serviceUsers.CreateUser(newUser)
 	//TODO: need add unique field, for example email
 
 	err := sessionauth.AuthenticateSession(session, &newUser)
@@ -37,13 +34,12 @@ func RegistrationUserHandler(r *http.Request, rnd render.Render, database *mgo.D
 	rnd.Redirect("/")
 }
 
-func LoginUserHandler(w http.ResponseWriter, r *http.Request, rnd render.Render, database *mgo.Database,
-	session sessions.Session, user sessionauth.User) {
+func LoginUserHandler(w http.ResponseWriter, r *http.Request, rnd render.Render, session sessions.Session) {
 	username := r.FormValue("username")
 	password := r.FormValue("password")
 
 	serviceUser := services.UserService{}
-	getUser, err := serviceUser.GetUser(database, bson.M{"username": username})
+	getUser, err := serviceUser.GetUser(bson.M{"username": username})
 	if err != nil || !utils.CompareHashAndPassword(getUser.Password, password) {
 		rnd.Redirect(sessionauth.RedirectUrl)
 		return

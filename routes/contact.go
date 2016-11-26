@@ -1,13 +1,13 @@
 package routes
 
 import (
-	"../models"
-	"../services"
 	"encoding/base64"
 	"fmt"
+	"github.com/life_of_student/models"
+	"github.com/life_of_student/services"
+	"github.com/life_of_student/utils"
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessionauth"
-	"gopkg.in/mgo.v2"
 	"log"
 	"net/http"
 	"net/mail"
@@ -21,7 +21,7 @@ func ContactViewHandler(rnd render.Render, user sessionauth.User) {
 	rnd.HTML(200, "contact-us", data)
 }
 
-func CreateContactHandler(r *http.Request, rnd render.Render, database *mgo.Database, user sessionauth.User) {
+func CreateContactHandler(r *http.Request, rnd render.Render, user sessionauth.User) {
 	name := r.FormValue("name")
 	email := r.FormValue("email")
 	subject := r.FormValue("subject")
@@ -29,7 +29,7 @@ func CreateContactHandler(r *http.Request, rnd render.Render, database *mgo.Data
 
 	contactDoc := models.Contact{Name: name, Email: email, Subject: subject, Message: message}
 	serviceContact := services.ContactService{}
-	serviceContact.CreateContact(database, contactDoc)
+	serviceContact.CreateContact(contactDoc)
 
 	go sendEmail(contactDoc.Subject, contactDoc.Message)
 
@@ -37,10 +37,10 @@ func CreateContactHandler(r *http.Request, rnd render.Render, database *mgo.Data
 }
 
 func sendEmail(subject, message string) {
-	auth := smtp.PlainAuth("", "salonhadassa@gmail.com", "salonhadassa12345", "smtp.gmail.com")
+	auth := smtp.PlainAuth("", utils.USERNAME, utils.PASSWORD, utils.HOST)
 
-	from := mail.Address{"testFrom", "salonhadassa@gmail.com"}
-	to := mail.Address{"testTo", "salonhadassa@gmail.com"}
+	from := mail.Address{"testFrom", utils.EMAILFROM}
+	to := mail.Address{"testTo", utils.EMAILTO}
 
 	header := make(map[string]string)
 	header["From"] = from.String()
@@ -56,7 +56,7 @@ func sendEmail(subject, message string) {
 	}
 	messages += "\r\n" + base64.StdEncoding.EncodeToString([]byte(message))
 
-	err := smtp.SendMail("smtp.gmail.com:587",
+	err := smtp.SendMail(utils.HOST+":"+utils.PORT,
 		auth,
 		from.Address,
 		[]string{to.Address},

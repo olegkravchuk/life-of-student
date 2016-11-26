@@ -1,15 +1,15 @@
 package services
 
 import (
-	"../models"
-	"gopkg.in/mgo.v2"
+	"github.com/life_of_student/models"
+	"github.com/life_of_student/utils"
 )
 
 type ContactService struct {
 	contact models.Contact
 }
 
-func (service ContactService) CreateContact(db *mgo.Database, contact models.Contact) error {
-	err := db.C("contact").Insert(contact)
+func (service ContactService) CreateContact(contact models.Contact) error {
+	err := utils.DB.C("contact").Insert(contact)
 	return err
 }
