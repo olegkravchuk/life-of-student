@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 blog-main">
+            <div class="blog-post">
+                <h2 class="blog-post-title text-xs-center"><a>{{.post.Title}}</a></h2>
+                <p class="blog-post-meta">{{.post.CreateDate.Format "2006-01-02"}} by <a>{{.post.Author.Username}}</a></p>
+                {{.post.Description | unescape}}
+            </div>
+            <hr>
+            <h2 class="blog-post-title text-xs-center">Comments</h2>
+            {{ if .user.Username}}
+                <div class="row">
+                    <div class="col-xs-6 mb-3">
+                        <form method="post" id="createComment" name="createComment">
+                            <input type="hidden" class="form-control" name="post" value="{{.post.Id}}">
+                            <div class="form-group">
+                                <label for="CommentTextarea">Leave a comment</label>
+                                <textarea class="form-control" id="CommentTextarea" rows="5" name="comment"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create comment</button>
+                        </form>
+                    </div>
+                </div>
+            {{end}}
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="subscribe"></div>
+                    {{range $key, $value := .comments}}
+                        <div class="card card-block">
+                            <h4 class="card-title">{{$value.Author.Username}}</h4>{{$value.CreateDate.Format "2006-01-02"}}
+                            <p class="card-text">{{$value.Comment}}</p>
+                        </div>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

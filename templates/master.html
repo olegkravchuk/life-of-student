@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Life of Students</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+<div class="blog-masthead">
+    <nav class="nav blog-nav">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/posts/create">Create Post</a>
+        <a class="nav-link" href="/contact-us">Contact Us</a>
+        {{if not .user.Username}}
+            <a class="nav-link float-xs-right" href="/auth/registration">Registration</a>
+        {{else}}
+            <a class="nav-link float-xs-right" href="/auth/logout">{{.user.Username}}/Logout</a>
+        {{end}}
+        {{if not .user.Username}}
+        <a class="nav-link float-xs-right" style="padding-top: 11px;">
+            <form class="form-inline float-xs-right" method="post" action="/auth/login">
+                <input class="form-control" type="text" placeholder="Username" name="username">
+                <input class="form-control" type="password" placeholder="Password" name="password">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </form>
+        </a>
+        {{end}}
+    </nav>
+</div>
+
+<div class="container">
+    {{ yield }}
+</div>
+
+<script src="/assets/js/jquery-3.1.1.min.js"></script>
+<script src="/assets/js/jquery.validate.min.js"></script>
+<script src="/assets/js/form-validation.js"></script>
+<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/create.js"></script>
+<script src="/assets/js/comment-socket.js"></script>
+</body>
+</html>
