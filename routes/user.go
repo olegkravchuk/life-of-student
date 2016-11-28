@@ -1,12 +1,12 @@
 package routes
 
 import (
-	"github.com/life_of_student/models"
-	"github.com/life_of_student/services"
-	"github.com/life_of_student/utils"
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessionauth"
 	"github.com/martini-contrib/sessions"
+	"github.com/olegkravchuk/life_of_student/models"
+	"github.com/olegkravchuk/life_of_student/services"
+	"github.com/olegkravchuk/life_of_student/utils"
 	"gopkg.in/mgo.v2/bson"
 	"net/http"
 )

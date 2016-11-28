@@ -3,13 +3,13 @@ package main
 import (
 	"github.com/beatrichartz/martini-sockets"
 	"github.com/go-martini/martini"
-	"github.com/life_of_student/models"
-	"github.com/life_of_student/routes"
-	"github.com/life_of_student/utils"
 	"github.com/martini-contrib/binding"
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessionauth"
 	"github.com/martini-contrib/sessions"
+	"github.com/olegkravchuk/life_of_student/models"
+	"github.com/olegkravchuk/life_of_student/routes"
+	"github.com/olegkravchuk/life_of_student/utils"
 	"html/template"
 )
 

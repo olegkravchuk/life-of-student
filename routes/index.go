@@ -2,11 +2,10 @@ package routes
 
 import (
 	"github.com/Unknwon/paginater"
-	"github.com/life_of_student/services"
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessionauth"
-	//"gopkg.in/mgo.v2"
-	"github.com/life_of_student/models"
+	"github.com/olegkravchuk/life_of_student/models"
+	"github.com/olegkravchuk/life_of_student/services"
 	"net/http"
 	"strconv"
 )

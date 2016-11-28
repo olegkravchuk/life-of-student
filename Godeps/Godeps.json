@@ -1,0 +1,123 @@
+{
+	"ImportPath": "github.com/olegkravchuk/life_of_student",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v75",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Unknwon/paginater",
+			"Rev": "7748a72e01415173a27d79866b984328e7b0c12b"
+		},
+		{
+			"ImportPath": "github.com/beatrichartz/martini-sockets",
+			"Comment": "v0.2.0-7-gdd9426a",
+			"Rev": "dd9426aec6f40093a0743238f7ff0b9fd4269ba3"
+		},
+		{
+			"ImportPath": "github.com/boj/redistore",
+			"Comment": "v1.2",
+			"Rev": "fc113767cd6b051980f260d6dbe84b2740c46ab0"
+		},
+		{
+			"ImportPath": "github.com/codegangsta/inject",
+			"Comment": "v1.0-rc1-10-g33e0aa1",
+			"Rev": "33e0aa1cb7c019ccc3fbe049a8262a6403d30504"
+		},
+		{
+			"ImportPath": "github.com/garyburd/redigo/internal",
+			"Comment": "v1.0.0-11-gd7de57c",
+			"Rev": "d7de57ceb51b029d5c5a61e26587f672e2834178"
+		},
+		{
+			"ImportPath": "github.com/garyburd/redigo/redis",
+			"Comment": "v1.0.0-11-gd7de57c",
+			"Rev": "d7de57ceb51b029d5c5a61e26587f672e2834178"
+		},
+		{
+			"ImportPath": "github.com/go-martini/martini",
+			"Comment": "v1.0-186-gfe605b5",
+			"Rev": "fe605b5cd210047ae3bb73d2b69a5b912a9b423d"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Comment": "v1.1-7-g08b5f42",
+			"Rev": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42"
+		},
+		{
+			"ImportPath": "github.com/gorilla/securecookie",
+			"Comment": "v1.1-5-gfa5329f",
+			"Rev": "fa5329f913702981df43dcb2a380bac429c810b5"
+		},
+		{
+			"ImportPath": "github.com/gorilla/sessions",
+			"Comment": "v1.1",
+			"Rev": "ca9ada44574153444b00d3fd9c8559e4cc95f896"
+		},
+		{
+			"ImportPath": "github.com/gorilla/websocket",
+			"Comment": "v1.0.0-39-ge8f0f8a",
+			"Rev": "e8f0f8aaa98dfb6586cbdf2978d511e3199a960a"
+		},
+		{
+			"ImportPath": "github.com/martini-contrib/binding",
+			"Rev": "05d3e151b6cf34dacac6306226a33db68459a3b5"
+		},
+		{
+			"ImportPath": "github.com/martini-contrib/render",
+			"Rev": "ec18f8345a1181146728238980606fb1d6f40e8c"
+		},
+		{
+			"ImportPath": "github.com/martini-contrib/sessionauth",
+			"Rev": "3c15d8cae6c39a8feb3d3f72750084bd50bd52cc"
+		},
+		{
+			"ImportPath": "github.com/martini-contrib/sessions",
+			"Rev": "fa13114fbcf036dff8185d728651d85fcef772db"
+		},
+		{
+			"ImportPath": "github.com/oxtoacart/bpool",
+			"Rev": "4e1c5567d7c2dd59fa4c7c83d34c2f3528b025d6"
+		},
+		{
+			"ImportPath": "github.com/russross/blackfriday",
+			"Comment": "v1.4-40-g5f33e7b",
+			"Rev": "5f33e7b7878355cd2b7e6b8eefc48a5472c69f70"
+		},
+		{
+			"ImportPath": "github.com/shurcooL/sanitized_anchor_name",
+			"Rev": "1dba4b3954bc059efc3991ec364f9f9a35f597d2"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/bcrypt",
+			"Rev": "ede567c8e044a5913dad1d1af3696d9da953104c"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/blowfish",
+			"Rev": "ede567c8e044a5913dad1d1af3696d9da953104c"
+		},
+		{
+			"ImportPath": "gopkg.in/mgo.v2",
+			"Comment": "r2016.08.01-5-g3f83fa5",
+			"Rev": "3f83fa5005286a7fe593b055f0d7771a7dce4655"
+		},
+		{
+			"ImportPath": "gopkg.in/mgo.v2/bson",
+			"Comment": "r2016.08.01-5-g3f83fa5",
+			"Rev": "3f83fa5005286a7fe593b055f0d7771a7dce4655"
+		},
+		{
+			"ImportPath": "gopkg.in/mgo.v2/internal/json",
+			"Comment": "r2016.08.01-5-g3f83fa5",
+			"Rev": "3f83fa5005286a7fe593b055f0d7771a7dce4655"
+		},
+		{
+			"ImportPath": "gopkg.in/mgo.v2/internal/sasl",
+			"Comment": "r2016.08.01-5-g3f83fa5",
+			"Rev": "3f83fa5005286a7fe593b055f0d7771a7dce4655"
+		},
+		{
+			"ImportPath": "gopkg.in/mgo.v2/internal/scram",
+			"Comment": "r2016.08.01-5-g3f83fa5",
+			"Rev": "3f83fa5005286a7fe593b055f0d7771a7dce4655"
+		}
+	]
+}

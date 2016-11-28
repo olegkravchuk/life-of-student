@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/life_of_student/models"
-	"github.com/life_of_student/utils"
+	"github.com/olegkravchuk/life_of_student/models"
+	"github.com/olegkravchuk/life_of_student/utils"
 )
 
 type ContactService struct {

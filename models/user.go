@@ -1,8 +1,8 @@
 package models
 
 import (
-	"github.com/life_of_student/utils"
 	"github.com/martini-contrib/sessionauth"
+	"github.com/olegkravchuk/life_of_student/utils"
 	"gopkg.in/mgo.v2/bson"
 )
 
